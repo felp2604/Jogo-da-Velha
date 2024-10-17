@@ -18,9 +18,7 @@ bool CheckDraw(char board[9]) {
   }
   if (temp == 9) {
     return true;
-  }
-  
-  else {
+  } else {
     return false;
   }
 }
@@ -72,23 +70,19 @@ void StartGame(char board[9], char &player_x, char &player_o) {
     std::cin >> move;
     move--;
 
-
-    if (board[move] == ' ' && move >= 0 && move < 9) {
-      board[move] = player_x;
+    while (board[move] != ' ' || move < 0 || move > 8) {
+      std::cout << "Lance invalido! Tente novamente: ";
+      std::cin >> move;
+      move--;
     }
-    else {
-      std::cout << "Lance invalido\n";
-      break;
-    }
+    board[move] = player_x;
 
     DrawBoard(board);
 
     if (CheckWinCondition(board, player_x, player_o)) {
       std::cout << "Jogador X venceu!\n";
       break;
-    }
-
-    else if (CheckDraw(board)) {
+    } else if (CheckDraw(board)) {
       std::cout << "Empate!\n";
       break;
     }
@@ -98,20 +92,18 @@ void StartGame(char board[9], char &player_x, char &player_o) {
     std::cin >> move;
     move--;
 
-    if (board[move] == ' ' && move >= 0 && move < 9) {
-      board[move] = player_o;
+    while (board[move] != ' ' || move < 0 || move > 8) {
+      std::cout << "Lance invalido! Tente novamente: ";
+      std::cin >> move;
+      move--;
     }
-    else {
-      std::cout << "Lance invalido\n";
-      break;
-    }
+    board[move] = player_o;
+
     if (CheckWinCondition(board, player_x, player_o)) {
-        DrawBoard(board);
+      DrawBoard(board);
       std::cout << "Jogador O venceu\n";
       break;
-    }
-
-    else if (CheckDraw(board)) {
+    } else if (CheckDraw(board)) {
       std::cout << "Empate!\n";
       break;
     }
