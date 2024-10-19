@@ -70,7 +70,7 @@ void StartGame(char board[9], char &player_x, char &player_o) {
     std::cin >> move;
     move--;
 
-    while (board[move] != ' ' || move < 0 || move > 8) {
+    while (board[move] != ' ' || move < 0 || move > 8 || !isalnum(move)) {
       std::cout << "Lance invalido! Tente novamente: ";
       std::cin >> move;
       move--;
@@ -92,7 +92,7 @@ void StartGame(char board[9], char &player_x, char &player_o) {
     std::cin >> move;
     move--;
 
-    while (board[move] != ' ' || move < 0 || move > 8) {
+    while (board[move] != ' ' || move < 0 || move > 8 || !isalnum(move)) {
       std::cout << "Lance invalido! Tente novamente: ";
       std::cin >> move;
       move--;
